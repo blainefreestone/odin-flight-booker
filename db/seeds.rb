@@ -16,3 +16,26 @@ airport_codes = ["ATL","DFW","DEN","ORD","LAX","JFK","LAS","MCO","MIA","CLT","SE
 airport_codes.each do |code|
     Airport.create!(code: code)
 end
+
+# Seed flights.
+Flight.delete_all
+
+DEP_FLIGHT_INDEX = 0
+ARR_FLIGHT_INDEX = 1
+flights_run_for_minutes = 43800
+Airport.all.to_a.permutation(2).to_a.each do |flights_array|
+    flight_duration = rand(45..500)
+    flight_frequency_minutes = rand(45..2880)
+    num_flights = (flights_run_for_minutes / flight_frequency_minutes).floor
+    running_flight_datetime = DateTime.now + rand(10080...12080).minutes
+
+    num_flights.times do
+        Flight.create!(
+            departure_airport: flights_array[DEP_FLIGHT_INDEX],
+            arrival_airport: flights_array[ARR_FLIGHT_INDEX],
+            start_datetime: running_flight_datetime,
+            duration_minutes: flight_duration
+        )
+        running_flight_datetime += flight_frequency_minutes.minutes
+    end
+end
