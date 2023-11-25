@@ -1,5 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
+<%= render partial: "search", locals: { 
+  airport_options: @airport_options, 
+  num_passengers_options: @num_passengers_options
+  } %>
+
 <h1>Flights</h1>
 
 <div id="flights">
