@@ -12,6 +12,12 @@ class FlightsController < ApplicationController
                                  .from_departure_airport(params[:departure_airport_id])
                                  .to_arrival_airport(params[:arrival_airport_id])
                                  .order(:start_datetime))
+
+    if params[:num_passengers].present? || params[:num_passengers] == ""
+      @num_passengers = 1
+    else
+      @num_passengers = params[:num_passengers]
+    end
   end
 
   # GET /flights/1 or /flights/1.json

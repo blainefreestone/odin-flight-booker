@@ -8,11 +8,24 @@
 <h1>Flights</h1>
 
 <div id="flights">
+  <% if false %>
   <% @flights.each do |flight| %>
     <%= render flight %>
     <p>
       <%= link_to "Show this flight", flight %>
     </p>
+  <% end %>
+  <% end %>
+
+  <%= form_with url: :new_flight, method: :get do |form| %>
+    <%= form.hidden_field :num_passengers, value: @num_passengers %>
+    <%= form.collection_radio_buttons :flight_id, @flights, :arrival_airport_id, :id do |block| %>
+      <div class="form-row" style="display: flex; gap: 3rem; padding: 1.5rem">
+        <%= block.radio_button %>
+        <%= render partial: "flight", locals: { flight: block.object } %>
+      </div>
+    <% end %>
+    <%= form.submit "Create Booking" %>
   <% end %>
 </div>
 
