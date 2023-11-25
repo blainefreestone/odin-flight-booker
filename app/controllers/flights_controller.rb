@@ -5,7 +5,13 @@ class FlightsController < ApplicationController
 
   # GET /flights or /flights.json
   def index
-    @pagy, @flights = pagy(Flight.order(:start_datetime))
+    @num_passengers_options = (1..4).map { |num| [num, num] }.insert(0, nil)
+    @airport_options = Airport.all.map { |airport| [ airport.code, airport.id ] }.insert(0, nil)
+
+    @pagy, @flights = pagy(Flight.around_date(params[:date])
+                                 .from_departure_airport(params[:departure_airport_id])
+                                 .to_arrival_airport(params[:arrival_airport_id])
+                                 .order(:start_datetime))
   end
 
   # GET /flights/1 or /flights/1.json
