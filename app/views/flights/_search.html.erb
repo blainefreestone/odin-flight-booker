@@ -1,19 +1,19 @@
-<%= form_with url: :flights, method: :get do |form| %>
-    <div class="form-row">
+<%= form_with url: :flights, method: :get, class: "search" do |form| %>
+    <div class="row">
         <%= form.label :departure_airport_id %>
         <%= form.select :departure_airport_id, airport_options %>
     </div>
-    <div class="form-row">
+    <div class="row">
         <%= form.label :arrival_airport_id %>
         <%= form.select :arrival_airport_id, airport_options %>
     </div>
-    <div class="form-row">
+    <div class="row">
         <%= form.label :date %>
         <%= form.date_field :date %>
     </div>
-    <div class="form-row">
+    <div class="row">
         <%= form.label :num_passengers %>
         <%= form.select :num_passengers, num_passengers_options %>
     </div>
-    <div class="form-row"><%= form.submit "Search" %></div>
+    <div class="row search-row"><%= form.submit "Search" %></div>
 <% end %>

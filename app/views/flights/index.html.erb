@@ -1,11 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render partial: "search", locals: { 
-  airport_options: @airport_options, 
-  num_passengers_options: @num_passengers_options
-  } %>
-
-<h1>Flights</h1>
+<div class="header">
+  <%= render partial: "search", locals: {
+    airport_options: @airport_options,
+    num_passengers_options: @num_passengers_options
+    } %>
+  
+  <div class="title">
+    <h1>Flight Search</h1>
+  </div>
+</div>
 
 <div id="flights">
   <% if false %>
@@ -17,10 +21,10 @@
   <% end %>
   <% end %>
 
-  <%= form_with url: :new_flight, method: :get do |form| %>
+  <%= form_with url: :new_flight, method: :get, class: "radio" do |form| %>
     <%= form.hidden_field :num_passengers, value: @num_passengers %>
     <%= form.collection_radio_buttons :flight_id, @flights, :arrival_airport_id, :id do |block| %>
-      <div class="form-row" style="display: flex; gap: 3rem; padding: 1.5rem">
+      <div class="row" style="display: flex; gap: 2rem; padding: 1rem">
         <%= block.radio_button %>
         <%= render partial: "flight", locals: { flight: block.object } %>
       </div>

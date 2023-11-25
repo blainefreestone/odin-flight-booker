@@ -13,3 +13,71 @@
  *= require_tree .
  *= require_self
  */
+
+:root {
+    --blue: #1560bd;
+    --yellow: #d4a518;
+    --cream: #ffeeca;
+    --brown: #867555;
+    --white: white;
+    --off-black: #303030;
+}
+
+body {
+    padding: 1rem;
+}
+
+.header {
+    background-color: var(--blue);
+    color: var(--white);
+
+    border-radius: 8px;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .title {
+    display: flex;
+    justify-content: center;
+    flex-basis: 67%;
+    flex-grow: 1;
+}
+
+.search {
+    padding: 1.2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    width: 305px;
+}
+
+.search .row {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.search .search-row {
+    grid-column: span 2;
+    margin: .75rem 15% 0 15%;
+}
+
+.search input[type="submit"] {
+    padding: .5rem;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--yellow);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+select {
+    background-color: var(--white);
+    
+    border: none;
+    padding: .2rem;
+    border-radius: 5px;
+}
