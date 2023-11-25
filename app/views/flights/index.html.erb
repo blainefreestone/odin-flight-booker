@@ -24,15 +24,13 @@
   <%= form_with url: :new_flight, method: :get, class: "radio" do |form| %>
     <%= form.hidden_field :num_passengers, value: @num_passengers %>
     <%= form.collection_radio_buttons :flight_id, @flights, :arrival_airport_id, :id do |block| %>
-      <div class="row" style="display: flex; gap: 2rem; padding: 1rem">
+      <div class="option-module" style="display: flex; gap: 2rem; padding: 1rem">
         <%= block.radio_button %>
         <%= render partial: "flight", locals: { flight: block.object } %>
       </div>
     <% end %>
-    <%= form.submit "Create Booking" %>
+    <div class="submit"><%= form.submit "Create Booking" %></div>
   <% end %>
 </div>
-
-<%= link_to "New flight", new_flight_path %>
 
 <%== pagy_nav(@pagy) %>

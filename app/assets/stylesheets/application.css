@@ -65,7 +65,7 @@ body {
     margin: .75rem 15% 0 15%;
 }
 
-.search input[type="submit"] {
+input[type="submit"] {
     padding: .5rem;
     border: none;
     border-radius: 6px;
@@ -80,4 +80,24 @@ select {
     border: none;
     padding: .2rem;
     border-radius: 5px;
+}
+
+.radio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 35rem);
+    gap: 3rem;
+    padding: 3rem;
+}
+
+.radio .option-module {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 4px solid var(--brown);
+}
+
+.radio .submit input[type="submit"] {
+    margin: 0 7rem;
+    padding: 1rem;
 }
