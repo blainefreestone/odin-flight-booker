@@ -1,9 +1,11 @@
 class FlightsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_flight, only: %i[ show edit update destroy ]
 
   # GET /flights or /flights.json
   def index
-    @flights = Flight.all
+    @pagy, @flights = pagy(Flight.order(:start_datetime))
   end
 
   # GET /flights/1 or /flights/1.json
