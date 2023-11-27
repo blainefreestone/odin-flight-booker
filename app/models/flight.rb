@@ -4,6 +4,8 @@ class Flight < ApplicationRecord
 
   belongs_to :departure_airport, class_name: "Airport"
   belongs_to :arrival_airport, class_name: "Airport"
+  belongs_to :booking
+  has_many :booked_passengers, through: :booking, source: :passenger
 
   def self.around_date(date_string, day_interval=1)
     if date_string == "" || !date_string
