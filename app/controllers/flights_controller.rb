@@ -13,7 +13,7 @@ class FlightsController < ApplicationController
                                  .to_arrival_airport(params[:arrival_airport_id])
                                  .order(:start_datetime))
 
-    if params[:num_passengers].present? || params[:num_passengers] == ""
+    if params[:num_passengers].nil? || params[:num_passengers] == ""
       @num_passengers = 1
     else
       @num_passengers = params[:num_passengers]
