@@ -11,26 +11,21 @@
   </div>
 </div>
 
-<div id="flights">
-  <% if false %>
-  <% @flights.each do |flight| %>
-    <%= render flight %>
-    <p>
-      <%= link_to "Show this flight", flight %>
-    </p>
-  <% end %>
-  <% end %>
-
-  <%= form_with url: :new_booking, method: :get, class: "radio" do |form| %>
-    <%= form.hidden_field :num_passengers, value: @num_passengers %>
-    <%= form.collection_radio_buttons :flight_id, @flights, :id, :id do |block| %>
-      <div class="option-module" style="display: flex; gap: 2rem; padding: 1rem">
-        <%= block.radio_button %>
-        <%= render partial: "flight", locals: { flight: block.object } %>
-      </div>
+<% if @flights %>
+  <div id="flights">
+    <%= form_with url: :new_booking, method: :get, class: "radio" do |form| %>
+      <%= form.hidden_field :num_passengers, value: @num_passengers %>
+      <%= form.collection_radio_buttons :flight_id, @flights, :id, :id do |block| %>
+        <div class="option-module" style="display: flex; gap: 2rem; padding: 1rem">
+          <%= block.radio_button %>
+          <%= render partial: "flight", locals: { flight: block.object } %>
+        </div>
+      <% end %>
+      <div class="submit"><%= form.submit "Create Booking" %></div>
     <% end %>
-    <div class="submit"><%= form.submit "Create Booking" %></div>
-  <% end %>
-</div>
+  </div>
 
-<%== pagy_nav(@pagy) %>
+  <%== pagy_nav(@pagy) %>
+<% else %>
+  <p>Enter search criteria to find your flight.</p>
+<% end %>
