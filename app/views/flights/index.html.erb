@@ -21,9 +21,9 @@
   <% end %>
   <% end %>
 
-  <%= form_with url: :new_flight, method: :get, class: "radio" do |form| %>
+  <%= form_with url: :new_booking, method: :get, class: "radio" do |form| %>
     <%= form.hidden_field :num_passengers, value: @num_passengers %>
-    <%= form.collection_radio_buttons :flight_id, @flights, :arrival_airport_id, :id do |block| %>
+    <%= form.collection_radio_buttons :flight_id, @flights, :id, :id do |block| %>
       <div class="option-module" style="display: flex; gap: 2rem; padding: 1rem">
         <%= block.radio_button %>
         <%= render partial: "flight", locals: { flight: block.object } %>

@@ -1,0 +1,17 @@
+<%= form_with model: @booking do |form| %>
+    <div class="passenger">
+        <%= form.fields_for :passengers do |sub_form| %>
+            <h2>Passenger</h2>
+            <div class="row">
+                <%= sub_form.label :name %>
+                <%= sub_form.text_field :name %>
+            </div>
+            <div class="row">
+                <%= sub_form.label :email %>
+                <%= sub_form.text_field :email %>
+            </div>
+        <% end %>
+    </div>
+    <%= form.hidden_field :flight_id, value: @booking.flight_id %>
+    <%= form.submit %>
+<% end %>
