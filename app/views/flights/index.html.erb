@@ -12,6 +12,16 @@
 </div>
 
 <% if @flights %>
+
+  <% if @params_text %>
+    <h3>Showing Results For:</h3>
+    <ul>
+      <%== "<li>Departure Airport: #{@params_text[:departure_airport]}</li>" if @params_text[:departure_airport].present? %>
+      <%== "<li>Arrival Airport: #{@params_text[:arrival_airport]}</li>" if @params_text[:arrival_airport].present? %>
+      <%== "<li>Date: #{@params_text[:date]}</li>" if @params_text[:date].present? %>
+    </ul>
+  <% end %>
+
   <div id="flights">
     <%= form_with url: :new_booking, method: :get, class: "radio" do |form| %>
       <%= form.hidden_field :num_passengers, value: @num_passengers %>
