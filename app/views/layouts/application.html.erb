@@ -11,6 +11,17 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <%= link_to "Sign Out", destroy_user_session_path %>
+    <% else %>
+      <%= link_to "Sign In", new_user_session_path %>
+    <% end %>
+    
     <%= yield %>
+
+    <% if current_user.try(:admin?) %>
+      <%= link_to "Bookings", bookings_path %>
+      <%= link_to "New Flight", new_flight_path %>
+    <% end %>
   </body>
 </html>

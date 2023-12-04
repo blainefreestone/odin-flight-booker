@@ -1,0 +1,14 @@
+<% @bookings.each do |booking| %>
+    <div class="booking">
+        <h2>Flight:</h2>
+        <%= render partial: "flights/flight", locals: {flight: booking.flight} %>
+        <h2>Passengers:</h2>
+        <% booking.passengers.each do |passenger| %>
+            <div class="passenger">
+                <b>Name:</b> <%= passenger.name %>
+                <b>Email:</b> <%= passenger.email %>
+            </div>
+        <% end %>
+        Created at: <%= booking.created_at %>
+    </div>
+<% end %>
