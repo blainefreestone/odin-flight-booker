@@ -17,7 +17,7 @@ class FlightsController < ApplicationController
       @flights = nil
     end
 
-    if params[:num_passengers].present?
+    unless params[:num_passengers].present?
       @num_passengers = 1
     else
       @num_passengers = params[:num_passengers]
