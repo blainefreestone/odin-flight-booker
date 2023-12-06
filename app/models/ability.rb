@@ -4,6 +4,8 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-
+    can :read, Flight
+    return unless user.admin?
+    can :manage, Flight
   end
 end
