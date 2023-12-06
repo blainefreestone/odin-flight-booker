@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :authenticate_admin, only: [:index]
+  authorize_resource
   
   def index
     @bookings = Booking.all
@@ -27,13 +27,13 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:flight_id, passengers_attributes: [:name, :email])
   end
 
-  def authenticate_admin
-    if current_user.try(:admin?)
-      return
-    elsif current_user
-      redirect_to root_path, alert: "You do not have permission to view this page"
-    else
-      authenticate_user!
-    end
-  end
+  # def authenticate_admin
+  #   if current_user.try(:admin?)
+  #     render :index
+  #   elsif current_user
+  #     redirect_to root_path, alert: "You do not have permission to view this page"
+  #   else
+  #     authenticate_user!
+  #   end
+  # end
 end
