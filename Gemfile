@@ -78,3 +78,5 @@ gem "sentry-ruby", "~> 5.14"
 gem "sentry-rails", "~> 5.14"
 
 gem "devise", "~> 4.9"
+
+gem 'cancancan'
