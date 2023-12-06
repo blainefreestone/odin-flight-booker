@@ -6,6 +6,6 @@ class Ability
   def initialize(user)
     can :read, Flight
     return unless user.admin?
-    can :manage, Flight
+    can :manage, :all
   end
 end
